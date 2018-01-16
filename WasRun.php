@@ -11,13 +11,6 @@ class WasRun extends TestCase {
         parent::__construct($name);
     }
 
-    public function run()
-    {
-        $method = $this->name;
-
-        $this->$method();
-    }
-
     public function testMethod()
     {
         $this->WasRun = 1;

@@ -6,4 +6,11 @@ class TestCase {
     {
         $this->name = $name;
     }
+
+    public function run()
+    {
+        $method = $this->name;
+
+        $this->$method();
+    }
 }
