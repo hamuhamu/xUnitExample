@@ -7,6 +7,11 @@ class WasRun {
         $this->wasRun = null;
     }
 
+    public function run()
+    {
+        $this->testMethod();
+    }
+
     public function testMethod()
     {
         $this->WasRun = 1;
