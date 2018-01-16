@@ -2,14 +2,18 @@
 
 class WasRun {
     public $wasRun;
+    public $name;
     public function __construct($name)
     {
         $this->wasRun = null;
+        $this->name = $name;
     }
 
     public function run()
     {
-        $this->testMethod();
+        $method = $this->name;
+
+        $this->$method();
     }
 
     public function testMethod()
