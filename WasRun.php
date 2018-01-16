@@ -1,6 +1,8 @@
 <?php
 
-class WasRun {
+require_once 'TestCase.php';
+
+class WasRun extends TestCase {
     public $wasRun;
     public $name;
     public function __construct($name)
