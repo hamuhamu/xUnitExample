@@ -1,8 +1,14 @@
 <?php
 
 class WasRun {
-    private $name;
-    public function __construct($name) {
-        $this->name = null;
+    public $wasRun;
+    public function __construct($name)
+    {
+        $this->wasRun = null;
+    }
+
+    public function testMethod()
+    {
+        $this->WasRun = 1;
     }
 }

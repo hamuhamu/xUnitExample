@@ -2,6 +2,6 @@
 require_once 'WasRun.php';
 
 $test = new WasRun('testMethod');
-echo $test->wasRun();
+var_dump($test->wasRun);
 $test->testMethod();
-echo $test->WasRun();
+var_dump($test->WasRun);
