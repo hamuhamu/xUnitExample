@@ -4,11 +4,11 @@ require_once 'TestCase.php';
 
 class WasRun extends TestCase {
     public $wasRun;
-    public $name;
+
     public function __construct($name)
     {
         $this->wasRun = null;
-        $this->name = $name;
+        parent::__construct($name);
     }
 
     public function run()
