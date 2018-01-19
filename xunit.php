@@ -1,4 +1,13 @@
 <?php
+
+class TestResult {
+
+    public function summary()
+    {
+        return '1 run, 0 failed';
+    }
+}
+
 class TestCase {
     public $name;
     public function __construct($name)
@@ -18,6 +27,8 @@ class TestCase {
         $this->$method();
 
         $this->tearDown();
+
+        return new TestResult();
     }
 
     public function tearDown()
@@ -52,6 +63,14 @@ class TestCaseTest extends TestCase {
         $test->run();
         assert('setUp testMethod tearDown ' === $test->log);
     }
+
+    public function testResult()
+    {
+        $test = new WasRun('testMethod');
+        $result = $test->run();
+        assert('1 run, 0 failed' === $result->summary());
+    }
 }
 
 (new TestCaseTest('testTemplateMethod'))->run();
+(new TestCaseTest('testResult'))->run();
