@@ -36,7 +36,7 @@ class WasRun extends TestCase {
 
     public function testMethod()
     {
-        $this->WasRun = 1;
+        $this->wasRun = 1;
     }
 }
 
@@ -45,9 +45,9 @@ class TestCaseTest extends TestCase {
     public function testRunning()
     {
         $test = new WasRun('testMethod');
-        assert(!$test->WasRun);
+        assert(!$test->wasRun);
         $test->run();
-        assert($test->WasRun);
+        assert($test->wasRun);
     }
 
     public function testSetUp()
