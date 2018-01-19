@@ -20,18 +20,16 @@ class TestCase {
 }
 
 class WasRun extends TestCase {
-    public $wasRun;
     public $log;
 
     public function setUp()
     {
-        $this->wasRun = null;
         $this->log = 'setUp ';
     }
 
     public function testMethod()
     {
-        $this->wasRun = 1;
+        $this->log = $this->log . 'testMethod ';
     }
 }
 
@@ -43,18 +41,11 @@ class TestCaseTest extends TestCase {
         $this->test = new WasRun('testMethod');
     }
 
-    public function testRunning()
+    public function testTemplateMethod()
     {
         $this->test->run();
-        assert($this->test->wasRun);
-    }
-
-    public function testSetUp()
-    {
-        $this->test->run();
-        assert('setUp ' === $this->test->log);
+        assert('setUp testMethod ' === $this->test->log);
     }
 }
 
-(new TestCaseTest('testRunning'))->run();
-(new TestCaseTest('testSetUp'))->run();
+(new TestCaseTest('testTemplateMethod'))->run();
