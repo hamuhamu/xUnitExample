@@ -29,7 +29,15 @@ class WasRun extends TestCase {
     }
 }
 
-$test = new WasRun('testMethod');
-var_dump($test->wasRun);
-$test->run();
-var_dump($test->WasRun);
+class TestCaseTest extends TestCase {
+
+    public function testRunning()
+    {
+        $test = new WasRun('testMethod');
+        assert(!$test->WasRun);
+        $test->run();
+        assert($test->WasRun);
+    }
+}
+
+(new TestCaseTest('testRunning'))->run();
