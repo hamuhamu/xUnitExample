@@ -1,10 +1,15 @@
 <?php
 
 class TestResult {
+    public $runCount;
+    public function __construct()
+    {
+        $this->runCount = 1;
+    }
 
     public function summary()
     {
-        return '1 run, 0 failed';
+        return sprintf('%d run, 0 failed', $this->runCount);
     }
 }
 
