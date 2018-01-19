@@ -22,11 +22,13 @@ class TestCase {
 class WasRun extends TestCase {
     public $wasRun;
     public $wasSetUp;
+    public $log;
 
     public function setUp()
     {
         $this->wasRun = null;
         $this->wasSetUp = 1;
+        $this->log = 'setUp ';
     }
 
     public function testMethod()
@@ -52,7 +54,7 @@ class TestCaseTest extends TestCase {
     public function testSetUp()
     {
         $this->test->run();
-        assert($this->test->wasSetUp);
+        assert('setUp ' === $this->test->log);
     }
 }
 
