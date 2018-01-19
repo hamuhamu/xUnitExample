@@ -13,9 +13,15 @@ class TestCase {
     public function run()
     {
         $this->setUp();
-        $method = $this->name;
 
+        $method = $this->name;
         $this->$method();
+
+        $this->tearDown();
+    }
+
+    public function tearDown()
+    {
     }
 }
 
@@ -31,6 +37,11 @@ class WasRun extends TestCase {
     {
         $this->log = $this->log . 'testMethod ';
     }
+
+    public function tearDown()
+    {
+        $this->log = $this->log . 'tearDown ';
+    }
 }
 
 class TestCaseTest extends TestCase {
@@ -39,7 +50,7 @@ class TestCaseTest extends TestCase {
     {
         $test = new WasRun('testMethod');
         $test->run();
-        assert('setUp testMethod ' === $test->log);
+        assert('setUp testMethod tearDown ' === $test->log);
     }
 }
 
