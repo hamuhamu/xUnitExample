@@ -4,7 +4,12 @@ class TestResult {
     public $runCount;
     public function __construct()
     {
-        $this->runCount = 1;
+        $this->runCount = 0;
+    }
+
+    public function testStarted()
+    {
+        $this->runCount = $this->runCount + 1;
     }
 
     public function summary()
@@ -26,6 +31,9 @@ class TestCase {
 
     public function run()
     {
+        $result = new TestResult();
+        $result->testStarted();
+
         $this->setUp();
 
         $method = $this->name;
@@ -33,7 +41,7 @@ class TestCase {
 
         $this->tearDown();
 
-        return new TestResult();
+        return $result;
     }
 
     public function tearDown()
