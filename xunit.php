@@ -43,8 +43,12 @@ class TestCase {
 
         $this->setUp();
 
-        $method = $this->name;
-        $this->$method();
+        try {
+            $method = $this->name;
+            $this->$method();
+        } catch (Exception $e) {
+            $result->testFailed();
+        }
 
         $this->tearDown();
 
@@ -113,7 +117,7 @@ class TestCaseTest extends TestCase {
     }
 }
 
-(new TestCaseTest('testTemplateMethod'))->run();
-(new TestCaseTest('testResult'))->run();
-# (new TestCaseTest('testFailedResult'))->run();
-(new TestCaseTest('testFailedResultFormatting'))->run();
+echo (new TestCaseTest('testTemplateMethod'))->run()->summary() . PHP_EOL;
+echo (new TestCaseTest('testResult'))->run()->summary() . PHP_EOL;
+echo (new TestCaseTest('testFailedResult'))->run()->summary() . PHP_EOL;
+echo (new TestCaseTest('testFailedResultFormatting'))->run()->summary() . PHP_EOL;
