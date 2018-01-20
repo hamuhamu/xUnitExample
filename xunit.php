@@ -112,7 +112,6 @@ class TestCaseTest extends TestCase {
         $result = new TestResult();
         $result->testStarted();
         $result->testFailed();
-
         assert('1 run, 1 failed' === $result->summary());
     }
 }
